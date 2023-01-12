@@ -1,19 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const index = 0;
-setInterval(() => {
+const root = ReactDOM.createRoot(
+  document.getElementById('root'),
+);
+
+function tick() {
   const element = (
-    <h1 className="heading" tabIndex={index}>
-      <span className="text">
-        Time
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>
+        It is
         {' '}
         {new Date().toLocaleTimeString()}
-      </span>
-    </h1>
+        .
+      </h2>
+    </div>
   );
-  ReactDOM.render(element, document.getElementById('root'));
-}, 1000);
+  root.render(element);
+}
+
+setInterval(tick, 1000);
+
+// const index = 0;
+// setInterval(() => {
+//   const element = (
+//     <h1 className="heading" tabIndex={index}>
+//       <span className="text">
+//         Time
+//         {' '}
+//         {new Date().toLocaleTimeString()}
+//       </span>
+//     </h1>
+//   );
+//   ReactDOM.render(element, document.getElementById('root'));
+// }, 1000);
 
 // import React from 'react';
 // import ReactDOM from 'react-dom/client';
