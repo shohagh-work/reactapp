@@ -1,10 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 import ReactDOM from 'react-dom/client';
-import { age, name } from './person';
+// import message from './message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+/* const shohagh = () => 'I am shohagh';
+const sumaiya = () => 'I am Sumaiya';
+const name = false;
+const yourName = name ? shohagh() : sumaiya();
+root.render(yourName); */
+/*
 const display = (
   <p>
     Hi, I am
@@ -18,7 +24,7 @@ const display = (
     .
   </p>
 );
-root.render(display);
+root.render(message()); */
 /* ES6 Destructing Objects */
 /* const vehicleOne = {
   brand: 'Ford',
