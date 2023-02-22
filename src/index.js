@@ -1,12 +1,26 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import ReactDOM from 'react-dom/client';
+import { age, name } from './person';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-
+const display = (
+  <p>
+    Hi, I am
+    {' '}
+    {name}
+    .
+    {' '}
+    My age is
+    {' '}
+    {age}
+    .
+  </p>
+);
+root.render(display);
 /* ES6 Destructing Objects */
-const vehicleOne = {
+/* const vehicleOne = {
   brand: 'Ford',
   model: 'Mustang',
   type: 'Car',
@@ -26,7 +40,7 @@ function myVehicle({
   root.render(<p>{message}</p>);
 }
 myVehicle(vehicleOne);
-
+*/
 /* ES6 Destructuring array */
 
 // function calculator(a, b) {
