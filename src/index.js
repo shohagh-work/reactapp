@@ -5,22 +5,28 @@ const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
 
-function tick() {
-  const element = (
-    <div>
-      <h1>Hello, world!</h1>
-      <h2>
-        It is
-        {' '}
-        {new Date().toLocaleTimeString()}
-        .
-      </h2>
-    </div>
-  );
-  root.render(element);
-}
+const myArray = ['Shohagh', 'Shakil', 'Tariqul'];
+const myList = myArray.map((item) => <p>{item}</p>);
 
-setInterval(tick, 1000);
+root.render(myList);
+// ReactDOM.render(myList, document.getElementById('root'));
+
+// function tick() {
+//   const element = (
+//     <div>
+//       <h1>Hello, world!</h1>
+//       <h1>
+//         It is
+//         {' '}
+//         {new Date().toLocaleTimeString()}
+//         .
+//       </h1>
+//     </div>
+//   );
+//   root.render(element);
+// }
+
+// setInterval(tick, 1000);
 
 // const index = 0;
 // setInterval(() => {
