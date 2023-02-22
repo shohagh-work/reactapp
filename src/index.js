@@ -5,10 +5,64 @@ const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
 
-const myArray = ['Shohagh', 'Shakil', 'Tariqul'];
-const myList = myArray.map((item) => <p>{item}</p>);
+/* ES6 Destructing Objects */
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'Car',
+  year: 2021,
+  color: 'red',
+  registration: {
+    city: 'Dhaka',
+    country: 'Bangladesh',
+  },
+};
 
-root.render(myList);
+function myVehicle({
+  type, color, brand, model, registration: { country },
+}) {
+  const message = `My ${type} is a ${color} ${brand} ${model} which is registered in ${country}.`;
+  // const display = ();
+  root.render(<p>{message}</p>);
+}
+myVehicle(vehicleOne);
+
+/* ES6 Destructuring array */
+
+// function calculator(a, b) {
+//   const add = a + b;
+//   const subtract = a - b;
+//   const multiply = a * b;
+//   const divide = a / b;
+//   return [add, subtract, multiply, divide];
+// }
+// const [add, subtract, multiply, divide] = calculator(9, 9);
+// const value = (
+//   <p>
+//     add:
+//     {' '}
+//     {add}
+//     {' '}
+//     subtract:
+//     {' '}
+//     {subtract}
+//     {' '}
+//     multiply:
+//     {' '}
+//     {multiply}
+//     {' '}
+//     divide:
+//     {' '}
+//     {divide}
+//   </p>
+// );
+// root.render(value);
+
+/* ES6 array methods */
+// const myArray = ['Shohagh', 'Shakil', 'Tariqul'];
+// const myList = myArray.map((item) => <p>{item}</p>);
+// root.render(myList);
+
 // ReactDOM.render(myList, document.getElementById('root'));
 
 // function tick() {
