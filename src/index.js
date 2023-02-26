@@ -1,12 +1,21 @@
 /* eslint-disable react/react-in-jsx-scope */
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import Garage from './Message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* React Props */
+/* React Events */
+function Football() {
+  function shoot(a, b) {
+    alert(b.type);
+  }
+  return (
+    <button type="button" onClick={(event) => { shoot('Goal!', event); }}>Take the Shoot</button>
+  );
+}
+root.render(<Football />);
+/* React Props
 function Car({ brand: { name } }) {
   return (
     <h2>
@@ -31,7 +40,7 @@ function Garage() {
   );
 }
 const element = <Garage />;
-root.render(element);
+root.render(element); */
 /* Class Component */
 // class Car extends React.Component {
 //   constructor(props) {
