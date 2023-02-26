@@ -1,10 +1,20 @@
 /* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import message from './message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+
+const x = 0;
+// if (x < 10) {
+//   txt = 'Hello';
+// }
+const myElement = (
+  <h1>{(x) > 10 ? 'Hello' : 'Good Bye'}</h1>
+);
+root.render(myElement);
 /* const shohagh = () => 'I am shohagh';
 const sumaiya = () => 'I am Sumaiya';
 const name = false;
