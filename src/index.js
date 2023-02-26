@@ -1,11 +1,96 @@
 /* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import message from './message';
+// import Garage from './Message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+/* React Props */
+function Car({ brand: { name } }) {
+  return (
+    <h2>
+      I have a
+      {' '}
+      {name}
+      {' '}
+      car.
+    </h2>
+  );
+}
+function Garage() {
+  const carName = {
+    name: 'Ford',
+    model: 'Mustang',
+  };
+  return (
+    <>
+      <h1>This garage capacity is big.</h1>
+      <Car brand={carName} />
+    </>
+  );
+}
+const element = <Garage />;
+root.render(element);
+/* Class Component */
+// class Car extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       brand: 'Ford',
+//       model: 'Mustang',
+//       color: 'red',
+//       year: 1964,
+//     };
+//   }
 
+//   changeColor = () => {
+//     this.setState({ color: 'blue' });
+//   };
+
+//   render() {
+//     const x = this.state;
+//     return (
+//       <div>
+//         <h1>
+//           This car brand:
+//           {' '}
+//           {x.brand}
+//           {' '}
+//           model:
+//           {' '}
+//           {x.model}
+//           {' '}
+//           color:
+//           {' '}
+//           {x.color}
+//           {' '}
+//           year:
+//           {' '}
+//           {x.year}
+//         </h1>
+//         <button
+//           type="button"
+//           onClick={this.changeColor}
+//         >
+//           Change Color
+
+//         </button>
+//       </div>
+
+//     );
+//   }
+// }
+// const element = <Car />;
+// root.render(element);
+// const x = 0;
+// if (x < 10) {
+//   txt = 'Hello';
+// }
+// const myElement = (
+//   <h1>{(x) > 10 ? 'Hello' : 'Good Bye'}</h1>
+// );
+// root.render(myElement);
 /* const shohagh = () => 'I am shohagh';
 const sumaiya = () => 'I am Sumaiya';
 const name = false;
