@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+
 /* const shohagh = () => 'I am shohagh';
 const sumaiya = () => 'I am Sumaiya';
 const name = false;
