@@ -5,16 +5,56 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* React Events */
+/* React Conditionals */
+/* Ternary Operator */
+// function MissedGoal() {
+//   return ;
+// }
+
+// function MadeGoal() {
+//   return ;
+// }
+function Goal({ isGoal }) {
+  return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      { isGoal ? <h1>GOAL!</h1> : <h1>MISSED!</h1> }
+    </>
+  );
+}
+root.render(<Goal isGoal={false} />);
+/* && condition
+function Garage(props) {
+  const { cars } = props;
+  return (
+    <>
+      <h1>In My garage</h1>
+      {cars.length > 0
+    && (
+    <h1>
+      I have
+      {' '}
+      {cars.length}
+      {' '}
+      cars.
+    </h1>
+    )}
+    </>
+  );
+}
+const cars = ['BMW', 'Volvo', 'Tesla'];
+root.render(<Garage cars={cars} />); */
+/* React Events
 function Football() {
   function shoot(a, b) {
+    // eslint-disable-next-line no-alert
     alert(b.type);
   }
   return (
     <button type="button" onClick={(event) => { shoot('Goal!', event); }}>Take the Shoot</button>
   );
 }
-root.render(<Football />);
+root.render(<Football />); */
 /* React Props
 function Car({ brand: { name } }) {
   return (
