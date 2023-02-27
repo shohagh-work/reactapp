@@ -1,12 +1,66 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import Garage from './Message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+/* React orms */
+function MyForm() {
+  const [name, setName] = useState('');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-alert
+    alert(`The name you entered was: ${name}`);
+  };
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="a">
+        Enter Your Name:
+        <input
+          id="a"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  );
+}
+const element = <MyForm />;
+root.render(element);
+/* React Lists
+function Car({ brand: { key, brand } }) {
+  return (
+    <li>
+      I have
+      {' '}
+      {key}
+      {' '}
+      {brand}
+      {' '}
+      car
+    </li>
+  );
+}
+function Garage() {
+  const cars = [
+    { key: 1, brand: 'BMW' },
+    { key: 2, brand: 'Ford' },
+    { key: 3, brand: 'Volvo' },
+    { key: 4, brand: 'Tesla' },
+  ];
+  return (
+    <ul>
+      {cars.map((car) => <Car brand={car} />)}
+    </ul>
+  );
+}
+root.render(<Garage />); */
 /* React Conditionals */
-/* Ternary Operator */
+/* Ternary Operator
 // function MissedGoal() {
 //   return ;
 // }
@@ -22,7 +76,7 @@ function Goal({ isGoal }) {
     </>
   );
 }
-root.render(<Goal isGoal={false} />);
+root.render(<Goal isGoal={false} />); */
 /* && condition
 function Garage(props) {
   const { cars } = props;
