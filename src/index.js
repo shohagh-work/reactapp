@@ -6,7 +6,47 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* React orms */
+/* React Forms */
+/* multiple Inputs */
+function MyForm() {
+  const [inputs, setInputs] = useState({});
+  const handleChange = (event) => {
+    const { name } = event.target;
+    const { value } = event.target;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-alert
+    alert(inputs);
+  };
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="a">
+        Enter Your Name:
+        <input
+          id="a"
+          type="text"
+          name="username"
+          value={inputs.username || ''}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="b">
+        Enter Your Age:
+        <input
+          id="b"
+          type="number"
+          name="age"
+          value={inputs.age || ''}
+          onChange={handleChange}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  );
+}
+/* for single input
 function MyForm() {
   const [name, setName] = useState('');
   const handleSubmit = (event) => {
@@ -28,7 +68,7 @@ function MyForm() {
       <input type="submit" />
     </form>
   );
-}
+} */
 const element = <MyForm />;
 root.render(element);
 /* React Lists
