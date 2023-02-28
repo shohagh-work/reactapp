@@ -1,13 +1,64 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Blogs from './pages/Blogs';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
+import Layout from './pages/Layout';
+import NoPage from './pages/NoPage';
 // import Garage from './Message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+/* Router */
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+root.render(<App />);
 /* React Forms */
-/* multiple Inputs */
+/* select
+function MyForm() {
+  const [myCar, setMyCar] = useState('Tesla');
+  const handleChange = (event) => {
+    setMyCar(event.target.value);
+  };
+  return (
+    <select value={myCar} onChange={handleChange}>
+      <option value="Volvo">Volvo</option>
+      <option value="Tesla">Tesla</option>
+      <option value="BMW">BMW</option>
+    </select>
+  );
+}
+root.render(<MyForm />); */
+/* text area
+function MyForm() {
+  const [textarea, setTextarea] = useState(
+    'This is a textarea.',
+  );
+  const handleChange = (event) => {
+    setTextarea(event.target.value);
+  };
+  return (
+    <form>
+      <textarea value={textarea} onChange={handleChange} />
+    </form>
+  );
+}
+root.render(<MyForm />); */
+/* multiple Inputs
 function MyForm() {
   const [inputs, setInputs] = useState({});
   const handleChange = (event) => {
@@ -24,6 +75,7 @@ function MyForm() {
     <form onSubmit={handleSubmit}>
       <label htmlFor="a">
         Enter Your Name:
+        <br />
         <input
           id="a"
           type="text"
@@ -32,8 +84,11 @@ function MyForm() {
           onChange={handleChange}
         />
       </label>
+      <br />
+      <br />
       <label htmlFor="b">
         Enter Your Age:
+        <br />
         <input
           id="b"
           type="number"
@@ -42,10 +97,12 @@ function MyForm() {
           onChange={handleChange}
         />
       </label>
+      <br />
+      <br />
       <input type="submit" />
     </form>
   );
-}
+}  */
 /* for single input
 function MyForm() {
   const [name, setName] = useState('');
@@ -68,9 +125,9 @@ function MyForm() {
       <input type="submit" />
     </form>
   );
-} */
+}
 const element = <MyForm />;
-root.render(element);
+root.render(element); */
 /* React Lists
 function Car({ brand: { key, brand } }) {
   return (
