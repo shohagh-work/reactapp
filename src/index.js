@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
@@ -7,18 +7,49 @@ import ReactDOM from 'react-dom/client';
 // import Home from './pages/Home';
 // import Layout from './pages/Layout';
 // import NoPage from './pages/NoPage';
-import Todos from './Message';
+// import './App.css';
+// import Todos from './Message';
+// import './index.css';
+// import './my-sass.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* React Memo */
+/* React Hook */
+function FavouriteColor() {
+  const [color, setColor] = useState('red');
+  return (
+    <>
+      <h1>
+        Selected Favourite Color is
+        {' '}
+        {color}
+      </h1>
+      <button type="button" onClick={() => setColor('Red')}>Red</button>
+      <button type="button" onClick={() => setColor('Blue')}>Blue</button>
+      <button type="button" onClick={() => setColor('Green')}>Green</button>
+    </>
+  );
+}
+root.render(<FavouriteColor />);
+/* React Memo
 function App() {
   const [count, setCount] = useState(0);
   const [todos] = useState(['todo 1', 'todo 2']);
   const increment = () => {
     setCount((c) => c + 1);
   };
+
+  const mySytle = {
+    color: 'white',
+    backgroundColor: '#000000',
+    margin: '15px 15px',
+    padding: '5px 10px',
+    borderRadius: '5px',
+    border: '0px',
+    cursor: 'pointer',
+  };
+
   return (
     <>
       <Todos todos={todos} />
@@ -27,13 +58,20 @@ function App() {
         Count:
         {' '}
         {count}
-        <button type="button" onClick={increment}>+</button>
+        <button
+          style={mySytle}
+          type="button"
+          onClick={increment}
+        >
+          +
+        </button>
+        <h1>Warning</h1>
       </div>
     </>
   );
 }
 
-root.render(<App />);
+root.render(<App />); */
 /* Router
 export default function App() {
   return (

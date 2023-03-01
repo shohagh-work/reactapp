@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
+import styles from './my-style.module.css';
 
 function Todos({ todos }) {
   return (
     <>
-      <h2>My Todos</h2>
+      <h2 className={styles.bigblue}>My Todos</h2>
       {todos.map((todo) => <p key={todo.id}>{todo}</p>)}
     </>
   );
