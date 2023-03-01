@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-function Car() {
-  return (
-    <h2>
-      This is acar.
-    </h2>
-  );
-}
-function Garage() {
+function Todos({ todos }) {
   return (
     <>
-      <h1>It is a garage</h1>
-      <Car />
+      <h2>My Todos</h2>
+      {todos.map((todo) => <p key={todo.id}>{todo}</p>)}
     </>
   );
 }
-export default Garage;
+export default memo(Todos);
+// function Car() {
+//   return (
+//     <h2>
+//       This is acar.
+//     </h2>
+//   );
+// }
+// function Garage() {
+//   return (
+//     <>
+//       <h1>It is a garage</h1>
+//       <Car />
+//     </>
+//   );
+// }
+// export default Garage;
 
 // const message = () => {
 //   const name = 'Shohagh';

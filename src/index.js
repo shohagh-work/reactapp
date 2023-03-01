@@ -1,17 +1,40 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Blogs from './pages/Blogs';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
-import Layout from './pages/Layout';
-import NoPage from './pages/NoPage';
-// import Garage from './Message';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import Blogs from './pages/Blogs';
+// import Contact from './pages/Contact';
+// import Home from './pages/Home';
+// import Layout from './pages/Layout';
+// import NoPage from './pages/NoPage';
+import Todos from './Message';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* Router */
+/* React Memo */
+function App() {
+  const [count, setCount] = useState(0);
+  const [todos] = useState(['todo 1', 'todo 2']);
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  return (
+    <>
+      <Todos todos={todos} />
+      <hr />
+      <div>
+        Count:
+        {' '}
+        {count}
+        <button type="button" onClick={increment}>+</button>
+      </div>
+    </>
+  );
+}
+
+root.render(<App />);
+/* Router
 export default function App() {
   return (
     <BrowserRouter>
@@ -26,7 +49,7 @@ export default function App() {
     </BrowserRouter>
   );
 }
-root.render(<App />);
+root.render(<App />); */
 /* React Forms */
 /* select
 function MyForm() {
