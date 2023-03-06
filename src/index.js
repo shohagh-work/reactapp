@@ -18,14 +18,15 @@ const root = ReactDOM.createRoot(
 /* useRef */
 function App() {
   const [inputValue, setInputValue] = useState('');
-  const count = useRef(0);
+  const previousValue = useRef('');
   useEffect(() => {
-    count.current += 1;
-  });
+    previousValue.current = inputValue;
+  }, [inputValue]);
   return (
     <>
       <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-      <h1>{`Render Count: ${count.current}`}</h1>
+      <h1>{`current input: ${inputValue}`}</h1>
+      <h1>{`previous input: ${previousValue.current}`}</h1>
     </>
   );
 }
