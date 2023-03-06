@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
@@ -15,7 +15,67 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* useEffect */
+/* useRef */
+function App() {
+  const [inputValue, setInputValue] = useState('');
+  const count = useRef(0);
+  useEffect(() => {
+    count.current += 1;
+  });
+  return (
+    <>
+      <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+      <h1>{`Render Count: ${count.current}`}</h1>
+    </>
+  );
+}
+root.render(<App />);
+/* useContext
+const UserContext = createContext();
+function Component1() {
+  const [user] = useState('Mmh Shohagh');
+  return (
+    <UserContext.Provider value={user}>
+      <h1>{`Hello ${user}!`}</h1>
+      <Component2 />
+    </UserContext.Provider>
+  );
+}
+function Component2() {
+  return (
+    <>
+      <h1>Component 2</h1>
+      <Component3 />
+    </>
+  );
+}
+function Component3() {
+  return (
+    <>
+      <h1>Component 3</h1>
+      <Component4 />
+    </>
+  );
+}
+function Component4() {
+  return (
+    <>
+      <h1>Component 4</h1>
+      <Component5 />
+    </>
+  );
+}
+function Component5() {
+  const user = useContext(UserContext);
+  return (
+    <>
+      <h1>Component 5</h1>
+      <h1>{`Hello ${user} again!`}</h1>
+    </>
+  );
+}
+root.render(<Component1 />); */
+/* useEffect
 function Timer() {
   const [count, setCount] = useState(0);
   // const [double, setDouble] = useState(0);
@@ -34,17 +94,17 @@ function Timer() {
         {' '}
         {count}
       </h1>
-      {/* <button type="button" onClick={() => { setCount((c) => c + 1); }}>Doubling</button> */}
-      {/* <h1>
+      { <button type="button" onClick={() => { setCount((c) => c + 1); }}>Doubling</button> }
+      { <h1>
         Count Double:
         {' '}
         {double}
-      </h1> */}
+      </h1>}
 
     </>
   );
 }
-root.render(<Timer />);
+root.render(<Timer />); */
 /* useState
 function Car() {
   const [car, setCar] = useState({
