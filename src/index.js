@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
@@ -15,7 +15,73 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* React Hook */
+/* useEffect */
+function Timer() {
+  const [count, setCount] = useState(0);
+  // const [double, setDouble] = useState(0);
+  useEffect(() => {
+    // setDouble(() => count * 2);
+    const timer = setTimeout(() => {
+      setCount(() => count + 1);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+    <>
+      <h1>
+        Count:
+        {' '}
+        {count}
+      </h1>
+      {/* <button type="button" onClick={() => { setCount((c) => c + 1); }}>Doubling</button> */}
+      {/* <h1>
+        Count Double:
+        {' '}
+        {double}
+      </h1> */}
+
+    </>
+  );
+}
+root.render(<Timer />);
+/* useState
+function Car() {
+  const [car, setCar] = useState({
+    brand: 'Ford',
+    model: 'Mustang',
+    year: 1964,
+    color: 'red',
+  });
+  const updateColor = () => {
+    setCar((allStates) => ({ ...allStates, color: 'blue' }));
+  };
+  return (
+    <>
+      <h1>
+        My
+        {' '}
+        {car.brand}
+      </h1>
+      <p>
+        It is a
+        {' '}
+        {car.color}
+        {' '}
+        {car.model}
+        {' '}
+        from
+        {' '}
+        {car.year}
+        .
+      </p>
+      <button type="button" onClick={updateColor}>Update Color</button>
+
+    </>
+  );
+}
+root.render(<Car />); */
+/* React Hook
 function FavouriteColor() {
   const [color, setColor] = useState('red');
   return (
@@ -31,7 +97,7 @@ function FavouriteColor() {
     </>
   );
 }
-root.render(<FavouriteColor />);
+root.render(<FavouriteColor />); */
 /* React Memo
 function App() {
   const [count, setCount] = useState(0);
