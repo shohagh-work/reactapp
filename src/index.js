@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useEffect, useRef, useState } from 'react';
+import { useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
@@ -15,7 +15,78 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* useRef */
+/* useReducer */
+/* example 2 */
+const initialTodos = [{
+  id: 1,
+  title: 'Todo 1',
+  complete: true,
+},
+{
+  id: 2,
+  title: 'Todo 2',
+  complete: false,
+}];
+const Reducer = (state, action) => {
+  switch (action.type) {
+    case 'COMPLETE':
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, complete: !todo.complete };
+        }
+        return todo;
+      });
+    default:
+      return state;
+  }
+};
+function Todos() {
+  const [todos, dispatch] = useReducer(Reducer, initialTodos);
+  const handleComplete = (todo) => {
+    dispatch({ type: 'COMPLETE', id: todo.id });
+  };
+  return (
+    <>
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          <label htmlFor={todo.id}>
+            <input
+              id={todo.id}
+              type="checkbox"
+              checked={todo.complete}
+              onChange={() => handleComplete(todo)}
+            />
+            {todo.title}
+          </label>
+        </div>
+      ))}
+    </>
+  );
+}
+root.render(<Todos />);
+/* example -1
+const Reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return state + 1;
+    case 'decrement':
+      return state - 1;
+    default:
+      throw new Error();
+  }
+};
+function Counter() {
+  const [count, dispatch] = useReducer(Reducer, 0);
+  return (
+    <>
+      <h1>{`Count: ${count}`}</h1>
+      <button type="button" onClick={() => { dispatch({ type: 'increment' }); }}>+</button>
+      <button type="button" onClick={() => { dispatch({ type: 'decrement' }); }}>-</button>
+    </>
+  );
+}
+root.render(<Counter />); */
+/* useRef
 function App() {
   const [inputValue, setInputValue] = useState('');
   const previousValue = useRef('');
@@ -30,7 +101,7 @@ function App() {
     </>
   );
 }
-root.render(<App />);
+root.render(<App />); */
 /* useContext
 const UserContext = createContext();
 function Component1() {
