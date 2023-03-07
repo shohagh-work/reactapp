@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useReducer } from 'react';
+import { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
@@ -8,15 +8,38 @@ import ReactDOM from 'react-dom/client';
 // import Layout from './pages/Layout';
 // import NoPage from './pages/NoPage';
 // import './App.css';
-// import Todos from './Message';
+import Todos from './Message';
 // import './index.css';
 // import './my-sass.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
+/* useCallback */
+function App() {
+  const [count, setCount] = useState(0);
+  const [todo, setTodo] = useState([]);
+  const addCount = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = useCallback(() => {
+    setTodo((e) => [...e, 'New ToDo']);
+  }, [todo]);
+  return (
+    <>
+      <Todos todo={todo} addTodo={addTodo} />
+      <div>
+        Count:
+        {' '}
+        {count}
+        <button type="button" onClick={addCount}>Add Count</button>
+      </div>
+    </>
+  );
+}
+root.render(<App />);
 /* useReducer */
-/* example 2 */
+/* example 2
 const initialTodos = [{
   id: 1,
   title: 'Todo 1',
@@ -63,7 +86,7 @@ function Todos() {
     </>
   );
 }
-root.render(<Todos />);
+root.render(<Todos />); */
 /* example -1
 const Reducer = (state, action) => {
   switch (action.type) {

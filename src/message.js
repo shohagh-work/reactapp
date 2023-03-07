@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
-import styles from './my-style.module.css';
 
-function Todos({ todos }) {
+function Todos({ todo, addTodo }) {
   return (
     <>
-      <h2 className={styles.bigblue}>My Todos</h2>
-      {todos.map((todo) => <p key={todo.id}>{todo}</p>)}
+      <h1>My ToDos</h1>
+      {todo.map((t) => <p key={t.id}>{t}</p>)}
+      <button type="button" onClick={addTodo}>Add Todo</button>
     </>
   );
 }
