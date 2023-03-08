@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useCallback, useState } from 'react';
+import { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
@@ -8,14 +8,51 @@ import ReactDOM from 'react-dom/client';
 // import Layout from './pages/Layout';
 // import NoPage from './pages/NoPage';
 // import './App.css';
-import Todos from './Message';
+// import Todos from './message';
 // import './index.css';
 // import './my-sass.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* useCallback */
+/* useMemo */
+const expenCal = (n) => {
+  for (let i = 0; i < 10000; i += 1) {
+    // eslint-disable-next-line no-param-reassign
+    n += 1;
+  }
+  return n;
+};
+function App() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+  const calculation = useMemo(() => expenCal(count), [count]);
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = () => {
+    setTodos((todo) => [...todo, 'New Todo']);
+  };
+  return (
+    <>
+      <div>
+        <h2>My Todos</h2>
+        {todos.map((todo) => <p key={todo.id}>{todo}</p>)}
+        <button type="button" onClick={addTodo}>Add Todo</button>
+      </div>
+      <div>
+        Count:
+        {' '}
+        {count}
+        <button type="button" onClick={increment}>+</button>
+        <h2>Expensive calculation</h2>
+        {calculation}
+      </div>
+    </>
+  );
+}
+root.render(<App />);
+/* useCallback
 function App() {
   const [count, setCount] = useState(0);
   const [todo, setTodo] = useState([]);
@@ -37,7 +74,7 @@ function App() {
     </>
   );
 }
-root.render(<App />);
+root.render(<App />); */
 /* useReducer */
 /* example 2
 const initialTodos = [{
