@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import useFetch from './useFetch';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Blogs from './pages/Blogs';
 // import Contact from './pages/Contact';
@@ -15,7 +15,19 @@ import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
-/* useMemo */
+/* Custom Hooks */
+function Home() {
+  const [data] = useFetch('https://jsonplaceholder.typicode.com/todos');
+  return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {data
+      && data.map((item) => <p key={item.id}>{item.id}</p>)}
+    </>
+  );
+}
+root.render(<Home />);
+/* useMemo
 const expenCal = (n) => {
   for (let i = 0; i < 10000; i += 1) {
     // eslint-disable-next-line no-param-reassign
@@ -51,7 +63,7 @@ function App() {
     </>
   );
 }
-root.render(<App />);
+root.render(<App />); */
 /* useCallback
 function App() {
   const [count, setCount] = useState(0);
